@@ -54,11 +54,7 @@ class UserHandler:
         return self._parse(response.data)
 
 
-#Added this to get user by genre to help in DiscoverViewController and TopNearbyViewController
-@router.get("/browse/genre/{genre}")
-async def get_users_by_genre(request: Request, genre: str, token: Token = Depends(get_user_token)):
-    users = await user_handler.get_users_by_genre(genre)
-    return JSONResponse({"message": "success", "users": users})
+
 
     # Follower Management Methods
     async def get_followers(self, *, user_id: Union[UUID, str]) -> List[UserModel]:

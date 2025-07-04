@@ -42,6 +42,7 @@ async def update_user(request: Request, user: UserModel, token: Token = Depends(
     updated_user = await user_handler.update_user(user_id=token.sub, update_payload=user)
     return JSONResponse({"message": "success", "user": updated_user})
 
+#give use user filterd on genre
 @router.get("/browse/genre/{genre_name}")
 async def get_users_by_genre(genre_name: str, token: Token = Depends(get_user_token)):
     users = await user_handler.get_users_by_genre(genre_name)
