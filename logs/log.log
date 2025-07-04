@@ -2,3 +2,34 @@
 2025-06-14 15:38:14,375 - app - INFO - info - Access token created for user: 1c72a196-f684-4c35-9e6d-cbce70cb537b
 2025-06-14 17:12:01,675 - app - DEBUG - debug - Creating access token for user: 1f484ff3-b3d3-4a79-8942-5f5c73312b52
 2025-06-14 17:12:01,679 - app - INFO - info - Access token created for user: 1f484ff3-b3d3-4a79-8942-5f5c73312b52
+2025-07-02 11:31:17,363 - app - DEBUG - debug - Decoding token
+2025-07-02 11:31:17,365 - app - ERROR - error - Token decoding failed due to invalid token
+Traceback (most recent call last):
+  File "/Users/swarnsinghchauhan/Desktop/creatist-backend/src/utils/token_handler.py", line 72, in decode_token
+    decoded = jwt.decode(token, self.secret, algorithms=[self.algorithm])
+  File "/Users/swarnsinghchauhan/Desktop/creatist-backend/.venv/lib/python3.13/site-packages/jwt/api_jwt.py", line 222, in decode
+    decoded = self.decode_complete(
+        jwt,
+    ...<8 lines>...
+        leeway=leeway,
+    )
+  File "/Users/swarnsinghchauhan/Desktop/creatist-backend/.venv/lib/python3.13/site-packages/jwt/api_jwt.py", line 167, in decode_complete
+    self._validate_claims(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        payload,
+        ^^^^^^^^
+    ...<4 lines>...
+        subject=subject,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/swarnsinghchauhan/Desktop/creatist-backend/.venv/lib/python3.13/site-packages/jwt/api_jwt.py", line 262, in _validate_claims
+    self._validate_exp(payload, now, leeway)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/swarnsinghchauhan/Desktop/creatist-backend/.venv/lib/python3.13/site-packages/jwt/api_jwt.py", line 363, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired")
+jwt.exceptions.ExpiredSignatureError: Signature has expired
+2025-07-02 11:31:18,286 - app - DEBUG - debug - Creating access token for user: 25b8559d-25f5-4961-9f49-192c13633b61
+2025-07-02 11:31:18,287 - app - INFO - info - Access token created for user: 25b8559d-25f5-4961-9f49-192c13633b61
+2025-07-02 11:31:18,356 - app - DEBUG - debug - Decoding token
+2025-07-02 11:31:18,356 - app - INFO - info - Token successfully decoded

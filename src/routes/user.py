@@ -42,6 +42,11 @@ async def update_user(request: Request, user: UserModel, token: Token = Depends(
     updated_user = await user_handler.update_user(user_id=token.sub, update_payload=user)
     return JSONResponse({"message": "success", "user": updated_user})
 
+@router.get("/browse/genre/{genre_name}")
+async def get_users_by_genre(genre_name: str, token: Token = Depends(get_user_token)):
+    users = await user_handler.get_users_by_genre(genre_name)
+    return JSONResponse({"message": "success", "users": users})
+
 # Follower Management APIs
 @router.get("/followers")
 async def get_followers(request: Request, token: Token = Depends(get_user_token)):
@@ -187,5 +192,8 @@ async def get_top_rated_artists(request: Request, token: Token = Depends(get_use
 async def get_artist_showcases(request: Request, artist_id: str, token: Token = Depends(get_user_token)):
     showcases = await user_handler.get_artist_showcases(artist_id=artist_id)
     return JSONResponse({"message": "success", "showcases": showcases})
+
+ 
+
 
 app.include_router(router)
